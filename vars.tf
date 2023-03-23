@@ -10,3 +10,6 @@ variable "tags" {}
 variable "database_name" {
   default = "dummy"
 }
+
+variable "no_of_instances" {}
+variable "instance_class" {}
