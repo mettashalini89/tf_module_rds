@@ -9,6 +9,7 @@ resource "aws_rds_cluster" "main" {
   preferred_backup_window = var.preferred_backup_window
   db_subnet_group_name    = aws_db_subnet_group.main.name
   skip_final_snapshot     = true
+  vpc_security_group_ids = [aws_security_group.main.id]
 
 
   tags = merge(
@@ -24,8 +25,8 @@ resource "aws_security_group" "main" {
 
   ingress {
     description      = "RDS"
-    from_port        = 27017
-    to_port          = 27017
+    from_port        = 3306
+    to_port          = 3306
     protocol         = "tcp"
     cidr_blocks      = var.allow_subnets
   }
